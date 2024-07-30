@@ -34,7 +34,7 @@ const Body = () => {
                 </div>
                 <button className='filter-btn  mx-24 p-2 font-bold text-lg bg-slate-100 rounded-lg hover:bg-slate-200' 
                 onClick={()=>{
-                   const filterListOfRestraunt = listOfRestraunt.filter((restaurant)=> restaurant.info.avgRating > 4.5)
+                   const filterListOfRestraunt = listOfRestraunt.filter((restaurant)=> restaurant.info.avgRating > 4.3)
                    setRowRest(filterListOfRestraunt)
                 }}> Top Rated Restaurants </button>
                 <div className="resto-container  flex flex-wrap">
