@@ -15,7 +15,7 @@ const Header = () => {
             <div className="nav-item flex items-center">
                 <ul className=" flex p-4 m-4">
                     <li className=" px-4" > 
-                        <Link to ="/Home"> Home </Link>
+                        <Link to ="/"> Home </Link>
                     </li>
                     <li className=" px-4" > 
                         <Link to = "/About"> About </Link>
@@ -26,6 +26,9 @@ const Header = () => {
                     <li className=" px-4" >  
                         <Link to ="/Cart"> Cart </Link>
                      </li>
+                     <li className=" px-4" > 
+                        <Link to ="/Home"> Home </Link>
+                    </li>
                     <button className="px-4 bg-slate-500 rounded text-center" onClick={()=> {btn_name === "Login"? setBtn_name("Logout") : setBtn_name("Login") }}>{btn_name}</button>
                 </ul>
             </div>

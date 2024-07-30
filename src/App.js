@@ -5,6 +5,7 @@ import Body from "./componets/Body";
 import About from "./componets/About";
 import Contact from "./componets/Contact";
 import Card from "./componets/Card";
+import RestaurantMenu from './componets/RestaurantMenu'
 import Error from "./componets/Error";
 
 
@@ -42,6 +43,10 @@ const appRouter = createBrowserRouter([
             {
                 path:"/cart",
                 element:<Card/>
+            },
+            {
+                path:"/restaurant/:restId", // Dynamic route
+                element:<RestaurantMenu/>
             }
         ]
     },

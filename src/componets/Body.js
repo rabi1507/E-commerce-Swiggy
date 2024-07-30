@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import RestaurantCart from './RestaurantCard';
 import { swiggyUrl } from '../utils/url';
 import Shimmer from './Shimmer';
+import { Link } from 'react-router-dom';
 const Body = () => {
 
     const [ listOfRestraunt, setListOfRestraunt] = useState([]);
@@ -39,7 +40,7 @@ const Body = () => {
                 }}> Top Rated Restaurants </button>
                 <div className="resto-container  flex flex-wrap">
                 {
-                    rowRest.map((element)=> <RestaurantCart restObj1 = {element} key = {element.info.id}/>)
+                    rowRest.map((element)=> <Link  key = {element.info.id} to ={"/restaurant/" + element.info.id }> <RestaurantCart restObj1 = {element} /> </Link>)
                 }
                 </div>
             </div>
