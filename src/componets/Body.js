@@ -3,11 +3,13 @@ import RestaurantCart from './RestaurantCard';
 import { swiggyUrl } from '../utils/url';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
+import useOnlineStatus from '../utils/useOnlineStatus';
 const Body = () => {
 
     const [ listOfRestraunt, setListOfRestraunt] = useState([]);
     const [text, setText] = useState("");
     const [rowRest, setRowRest] = useState([]);
+    const onLineStaus = useOnlineStatus();
     useEffect(()=>{
         fetchData();
     },[]);
@@ -20,6 +22,7 @@ const Body = () => {
 
     }
      
+    if(!onLineStaus) return <h5>You are look like offline</h5>
     return listOfRestraunt.length === 0 ? <Shimmer/> : (
         <div className="rest-body flex flex-wrap p-4 m-4 justify-between">
             <div className="filter flex flex-wrap ">

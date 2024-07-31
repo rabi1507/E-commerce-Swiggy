@@ -1,19 +1,21 @@
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import Header from "./componets/Header";
-import Body from "./componets/Body";
-import About from "./componets/About";
-import Contact from "./componets/Contact";
-import Card from "./componets/Card";
-import RestaurantMenu from './componets/RestaurantMenu'
-import Error from "./componets/Error";
-
+import { createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
+import { lazy, Suspense } from "react";
+const Error = lazy(()=> import("./componets/Error"));
+const RestaurantMenu = lazy(()=> import("./componets/RestaurantMenu"));
+const Card = lazy(()=> import('./componets/Card'));
+const Contact = lazy(()=> import("./componets/Contact"));
+const About = lazy(()=>import("./componets/About"));
+const Body = lazy(()=> import("./componets/Body"));
+const Header = lazy(()=> import("./componets/Header"))
 
 const AppLayout = () => {
     return (
         <div className="app-layout">
+           
             <Header/>
            <Outlet/>
+         
         </div>
     );
 };
@@ -26,27 +28,27 @@ const appRouter = createBrowserRouter([
         children:[
             {
                 path:"/",
-                element: <Body/>,
+                element: <Suspense>  <Body/></Suspense>,
             },
             {
                 path:"/about",
-                element: <About/>,
+                element: <Suspense>  <About/></Suspense>,
             },
             {
                 path:"/home",
-                element: <Body/>,
+                element: <Suspense> <Body/></Suspense>,
             },
             {
                 path: "/contact",
-                element: <Contact/>,
+                element: <Suspense> <Contact/></Suspense>,
             },
             {
                 path:"/cart",
-                element:<Card/>
+                element: <Suspense> <Card/> </Suspense>
             },
             {
                 path:"/restaurant/:restId", // Dynamic route
-                element:<RestaurantMenu/>
+                element:<Suspense> <RestaurantMenu/> </Suspense>
             }
         ]
     },
