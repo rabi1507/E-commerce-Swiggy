@@ -1,40 +1,16 @@
-import { useEffect, useState } from "react";
-import { RESTO_MANU, CDN_URL} from "../utils/url";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
+import { CDN_URL } from "../utils/url";
 
 const RestaurantMenu = () => {
-    const [resInfo, setResInfo] = useState([]);
-    const [loading, setLoading] = useState(true); 
-    const [error, setError] = useState(null); 
 
     const {restId} = useParams(); 
 
-    useEffect(() => {
-        fetchData();
-    }, []); 
-
-    const fetchData = async () => {
-        try {
-            const response = await fetch(RESTO_MANU + restId);
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const jsonData = await response.json();
-            setResInfo(jsonData?.data?.cards[2]?.card?.card?.info || []);
-        } catch (error) {
-            setError(error.message);
-        } finally {
-            setLoading(false);
-        }
-    };
-    if (loading) return <Shimmer />;
-    if (error) return <div>Error: {error}</div>;
-    
-    if (!resInfo) return <div>No restaurant data available</div>;
-
-    const { name, avgRating, costForTwo, sla, cloudinaryImageId } = resInfo;
-    console.log(resInfo);
+    const resData = useRestaurantMenu(restId);
+    if(!resData) return <Shimmer/>
+    const {name, avgRating, costForTwo, sla, cloudinaryImageId} = resData?.cards[2]?.card?.card?.info; 
+    console.log(name, avgRating, costForTwo, sla, cloudinaryImageId );
 
     return (
         <div className="p-6 mt-20 max-w-sm mx-auto bg-white border border-gray-200 rounded-lg shadow-md">
@@ -47,6 +23,7 @@ const RestaurantMenu = () => {
             <div className="mt-10"> 
                 <img src={CDN_URL + cloudinaryImageId }></img>
             </div>
+            <h2 className="text-2xl mb-2 font-bold text-gray-600"> Order Now, Will get within :-  {sla.deliveryTime} Minutes </h2>
         </div>
     );
 };

@@ -25,9 +25,9 @@ class UserClass extends React.Component{
     render(){
         
         const { name, avatar_url, login } = this.state.userInfo;
-        return <div>
+        return <div className="p-6 mt-20 max-w-sm mx-auto bg-white border border-gray-200 rounded-lg shadow-md">
             <h1> {name} </h1>
-            <img src= {avatar_url} ></img>
+            {/* <img src= {avatar_url} ></img> */}
             <h3> {login} </h3>
         </div>
     }
