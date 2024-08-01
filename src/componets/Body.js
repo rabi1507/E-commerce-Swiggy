@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import RestaurantCart from './RestaurantCard';
+import RestaurantCart, {withPromotedLabel} from './RestaurantCard';
 import { swiggyUrl } from '../utils/url';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
 import useOnlineStatus from '../utils/useOnlineStatus';
+
 const Body = () => {
 
     const [ listOfRestraunt, setListOfRestraunt] = useState([]);
@@ -21,7 +22,8 @@ const Body = () => {
         setRowRest(swiggyJson?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
 
     }
-     
+     const PromotedLabel = withPromotedLabel( RestaurantCart );
+
     if(!onLineStaus) return <h5>You are look like offline</h5>
     return listOfRestraunt.length === 0 ? <Shimmer/> : (
         <div className="rest-body flex flex-wrap p-4 m-4 justify-between">
@@ -43,7 +45,15 @@ const Body = () => {
                 }}> Top Rated Restaurants </button>
                 <div className="resto-container  flex flex-wrap">
                 {
-                    rowRest.map((element)=> <Link  key = {element.info.id} to ={"/restaurant/" + element.info.id }> <RestaurantCart restObj1 = {element} /> </Link>)
+                    rowRest.map((element)=> <Link  key = {element.info.id} to ={"/restaurant/" + element.info.id }> 
+                    {/* <RestaurantCart restObj1 = {element} />  */}
+
+                    {
+                        element.info.areaName === "Koramangala" ? (<PromotedLabel restObj1 = {element}/>) : (<RestaurantCart restObj1 = {element}/>)
+
+                    }
+
+                    </Link>)
                 }
                 </div>
             </div>
