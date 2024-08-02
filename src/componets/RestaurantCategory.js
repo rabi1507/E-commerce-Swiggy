@@ -1,20 +1,18 @@
-const RestaurantCategory =({data}) => {
-
-    console.log("propsprops", data.title);
-    // data.itemCards.map((item) => {console.log(item.card.info)})
-
-
+import { useState } from "react";
+import ItemList from "./ItemList";
+const RestaurantCategory =({data, showItem, setShowIndex}) => {
+    const handler = ()=>{
+        setShowIndex();
+    }
     return(
-        <div>
-       {/* {
-        data.itemCards.map((item) => { 
-            <h4> {item.card.info}</h4>
-        })
-       } */}
-
-       <div className="w-6/12 mx-auto my-4 bg-gray-50 shadow-lg p-4 flex justify-between cursor-pointer">
+        <div className=" bg-slate-300">
+       <div className="w-6/12 mx-auto my-4 bg-gray-50 shadow-lg p-4 break-words ">
+        <div className="flex justify-between cursor-pointer " onClick = {handler} >
         <span className="font-bold text-lg"> {data.title} {data.itemCards.length} </span>
         <span>⬇️</span>
+        </div>
+
+       { showItem &&  <ItemList itemList = {data.itemCards}/>}
        </div>
         </div>
     )
