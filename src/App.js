@@ -21,8 +21,6 @@ const AppLayout = () => {
            <Header/>
            <Outlet/>
            </UserContex.Provider>
-        
-         
         </div>
         </Provider>
     );

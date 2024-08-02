@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import useOnlineStatus from '../utils/useOnlineStatus';
 
 const Body = () => {
-
+    console.log("swiggyUrlswiggyUrl", swiggyUrl);
     const [ listOfRestraunt, setListOfRestraunt] = useState([]);
     const [text, setText] = useState("");
     const [rowRest, setRowRest] = useState([]);
@@ -17,6 +17,8 @@ const Body = () => {
 
     const fetchData = async()=>{
         const swiggyData = await fetch(swiggyUrl);
+        console.log("swiggyData, ", swiggyData);
+        // if(!swiggyData) return 
         const swiggyJson = await swiggyData.json();
         setListOfRestraunt(swiggyJson?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setRowRest(swiggyJson?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
