@@ -17,7 +17,7 @@ class PayClass extends React.Component{
         console.log("rendered is called");
         return(
             <div>
-                <h1> Count: {this.state.count} count2: {this.state.count2}</h1>
+                <h1 className="justify-between mb-4 font-bold gap-4"> <span>Increment both : {this.state.count}</span> <span> Decricrement: {this.state.count2}</span></h1>
                 <button className="bg-slate-600 rounded-lg border-l-sky-950 mx-4 px-4" onClick={()=> this.setState({
                     count: this.state.count+1,
                     count2: this.state.count2+1
@@ -27,8 +27,6 @@ class PayClass extends React.Component{
                 <button className="bg-slate-600 rounded-lg border-l-sky-950 mx-4 px-4" onClick={()=> this.setState({
                     count2: this.state.count2 -1,
                 })}>decricrement</button>
-                <h3>{name}</h3>
-                <h3>{location}</h3>
             </div>
         )
     }

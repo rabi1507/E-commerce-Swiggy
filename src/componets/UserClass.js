@@ -24,11 +24,10 @@ class UserClass extends React.Component{
     
     render(){
         
-        const { name, avatar_url, login } = this.state.userInfo;
-        return <div className="p-6 mt-20 max-w-sm mx-auto bg-white border border-gray-200 rounded-lg shadow-md">
-            <h1> {name} </h1>
-            {/* <img src= {avatar_url} ></img> */}
-            <h3> {login} </h3>
+        const { html_url } = this.state.userInfo;
+        return <div className=" mt-4 max-w-sm mx-auto bg-white border border-gray-200 rounded-lg shadow-md">
+            {/* <h1 className="font-extralight p-2 m-2"> {name} </h1> */}
+            <h3 className="font-semibold mx-2 mb-4"> Github Link :  {html_url} </h3> 
         </div>
     }
    
