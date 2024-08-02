@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import useOnlineStatus from '../utils/useOnlineStatus';
 
 const Body = () => {
-    console.log("swiggyUrlswiggyUrl", swiggyUrl);
+    // console.log("swiggyUrlswiggyUrl", swiggyUrl);
     const [ listOfRestraunt, setListOfRestraunt] = useState([]);
     const [text, setText] = useState("");
     const [rowRest, setRowRest] = useState([]);
