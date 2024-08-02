@@ -14,7 +14,7 @@ const Header = () => {
     return (
         <div className="header m-4 p-4 bg-slate-100 flex justify-between box-border border to-black">
             <div className="logo-container flex items-center" >
-                <img className="logo w-24"
+                <img className="logo w-24 rounded-lg"
                      src={HEADER_URL}
                      alt="Logo"
                 />
